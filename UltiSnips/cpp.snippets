@@ -1,0 +1,78 @@
+priority -50
+
+extends c
+
+# We want to overwrite everything in parent ft.
+priority -49
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+endsnippet
+
+snippet mtscl "Mitsuba class (mtscl)"
+class MTS_EXPORT_CORE ${1:`!p snip.rv = snip.basename.capitalize() or "Name"`} : public Object {
+public:
+	${1/(\w+).*/$1/}(${2:args});
+
+	MTS_DECLARE_CLASS()
+protected:
+	/* Virtual destructor */
+	virtual ~${1/(\w+).*/$1/}();
+
+protected:
+	${0:/* data */}
+};
+endsnippet
+
+snippet ns "namespace .. (namespace)"
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
+	${VISUAL}${0}
+}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+endsnippet
+
+snippet map "std::map (map)"
+std::map<${1:key}, ${2:value}> map$0;
+endsnippet
+
+snippet vector "std::vector (v)"
+std::vector<${1:char}> v$0;
+endsnippet
+
+snippet tp "template <typename ..> (template)"
+template <typename ${1:_InputIter}>
+endsnippet
+
+# foreach
+snippet fore "for (auto ..)"
+for (${1:auto} ${2:i} : ${3:container}) {
+	${4}
+}
+endsnippet
+
+# iterator
+snippet iter
+	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin(); $4 != $5.end(); ++$4) {
+		${6}
+	}
+endsnippet
+
+# auto iterator
+snippet itera
+for (auto ${1:i} = ${2:container}.begin(); $1 != $2.end(); ++$1) {
+	${3:std::cout << *$1 << std::endl;}
+}
+endsnippet
+
+snippet ld
+[${1:&}](${2:int i}){${3}}
+endsnippet
+
+snippet lld
+[${1:&}](${2:int i}){
+	${3}
+}
+endsnippet
+# vim:ft=snippets:
