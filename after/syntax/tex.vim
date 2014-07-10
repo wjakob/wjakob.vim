@@ -14,7 +14,7 @@ if has('conceal')
 	syn match texMathSymbol '\\langle\>\s*' contained conceal cchar=⟨
 	syn match texMathSymbol '\s*\\rangle\>' contained conceal cchar=⟩
 	syn match texMathSymbol '\\\\' contained conceal cchar=⤦
-	"
+
 	" Simple number super/sub-scripts
 	syn match texMathSymbol '\^0' contained conceal cchar=⁰
 	syn match texMathSymbol '\^1' contained conceal cchar=¹
@@ -126,6 +126,7 @@ if has('conceal')
 	syn match texBoldMathText '\\vx\>' contained conceal cchar=x
 	syn match texBoldMathText '\\vy\>' contained conceal cchar=y
 	syn match texBoldMathText '\\vz\>' contained conceal cchar=z
+	syn match texBoldMathText '\\bar\>' contained conceal cchar=‾
 
 	" \mathcal characters
 	syn match texMathSymbol '\\mathcal{A}' contained conceal cchar=𝓐
@@ -155,16 +156,19 @@ if has('conceal')
 	syn match texMathSymbol '\\mathcal{Y}' contained conceal cchar=𝓨
 	syn match texMathSymbol '\\mathcal{Z}' contained conceal cchar=𝓩
 
+	syn match texStatement '``' contained conceal cchar=“
+	syn match texStatement '\'\'' contained conceal cchar=”
 	syn match texStatement '\\item\>' contained conceal cchar=•
 	syn match texMathSymbol '\\dd' contained conceal cchar=d
 	syn match texDelimiter '\\{' contained conceal cchar={
 	syn match texDelimiter '\\}' contained conceal cchar=}
-	syn match texMathSymbol '\\setminus' contained conceal cchar=\
-	syn match texMathSymbol '\\coloneqq' contained conceal cchar=≔
+	syn match texMathSymbol '\\setminus\>' contained conceal cchar=\
+	syn match texMathSymbol '\\coloneqq\>' contained conceal cchar=≔
 	syn match texMathSymbol '\\,' contained conceal cchar= 
 	syn match texMathSymbol '\\ ' contained conceal cchar= 
 	syn match texMathSymbol '\\quad' contained conceal cchar= 
 	syn match texMathSymbol '\\sqrt' contained conceal cchar=√
+	syn match texMathSymbol '\\where\>' contained conceal cchar=|
 	syn match texMathSymbol '\\\!' contained conceal
 
 	" hide \text delimiter etc inside math mode
@@ -178,6 +182,12 @@ if has('conceal')
 	syn region texBoldMathText matchgroup=texStatement start='\\\(mathbf\|bm\){' end='}' concealends keepend contains=@texMathZoneGroup
  	syn cluster texMathZoneGroup add=texBoldMathText
 
-	hi texBoldMathText ctermfg=4 guifg=white cterm=bold gui=bold
+	syn region texBoldItalStyle	matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
+	syn region texItalStyle	 matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
+	syn region texItalStyle	 matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
+
 	set ambiwidth=single
+	hi texBoldMathText ctermfg=4 guifg=white cterm=bold gui=bold
+	hi texRefZone ctermfg=4
+	hi texInputFile ctermfg=4
 endif
