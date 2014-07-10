@@ -4,7 +4,7 @@ extends texmath
 
 snippet "b(egin)?" "begin{} / end{}" br
 \begin{${1:something}}
-	${0:${VISUAL}}
+    ${0:${VISUAL}}
 \end{$1}
 endsnippet
 
@@ -14,30 +14,21 @@ $0${2/((?<=.)c|l|r)|./(?1: & )/g}
 \end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
 endsnippet
 
-snippet fig "Figure environment" b
-\begin{figure}${2:[htpb]}
-	\centering
-	\includegraphics[width=${3:0.8}\linewidth]{${4:name.ext}}
-	\caption{${4/(\w+)\.\w+/\u$1/}$0}
-	\label{fig:${4/(\w+)\.\w+/$1/}}
-\end{figure}
-endsnippet
-
 snippet enum "Enumerate" b
 \begin{enumerate}
-	\item $0
+    \item $0
 \end{enumerate}
 endsnippet
 
 snippet item "Itemize" b
 \begin{itemize}
-	\item $0
+    \item $0
 \end{itemize}
 endsnippet
 
 snippet desc "Description" b
 \begin{description}
-	\item[$1] $0
+    \item[$1] $0
 \end{description}
 endsnippet
 
@@ -55,7 +46,7 @@ endsnippet
 
 snippet cha "Chapter" b
 \chapter{${1:chapter name}}
-\label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{ch:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
 endsnippet
@@ -69,14 +60,14 @@ endsnippet
 
 snippet sub "Subsection" b
 \subsection{${1:subsection name}}
-\label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
 endsnippet
 
 snippet ssub "Subsubsection" b
 \subsubsection{${1:subsubsection name}}
-\label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
 endsnippet
@@ -95,9 +86,15 @@ snippet subp "Subparagraph" b
 ${0}
 endsnippet
 
-snippet ni "Non-indented paragraph" b
-\noindent
-${0}
+snippet fig "Figure environment" b
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=\columnwidth]{${1:figures/filename.pdf}}
+    \caption{%
+        \label{fig:${2:label}}%
+        ${3:Caption}
+    }
+\end{figure}
 endsnippet
 
 snippet pac "Package" b
