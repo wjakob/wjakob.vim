@@ -38,6 +38,8 @@ if has('conceal')
 	syn match texMathSymbol '_9' contained conceal cchar=₉
 	syn match texMathSymbol '_i' contained conceal cchar=ᵢ
 	syn match texMathSymbol '^i' contained conceal cchar=ⁱ
+	syn match texMathSymbol '_o' contained conceal cchar=ₒ
+	syn match texMathSymbol '^o' contained conceal cchar=ᵒ
  
 	" logical symbols
 	syn match texMathSymbol '\\lor\>' contained conceal cchar=∨
@@ -170,6 +172,8 @@ if has('conceal')
 	syn match texMathSymbol '\\sqrt' contained conceal cchar=√
 	syn match texMathSymbol '\\where\>' contained conceal cchar=|
 	syn match texMathSymbol '\\\!' contained conceal
+	"syn match texStatement '\\\[' contained conceal cchar=⟦
+	"syn match texStatement '\\\]' contained conceal cchar=⟧
 
 	" hide \text delimiter etc inside math mode
 	if !exists("g:tex_nospell") || !g:tex_nospell
@@ -190,4 +194,6 @@ if has('conceal')
 	hi texBoldMathText ctermfg=4 guifg=white cterm=bold gui=bold
 	hi texRefZone ctermfg=4
 	hi texInputFile ctermfg=4
+	hi texMathZoneE ctermfg=4
+	hi texMathZoneX ctermfg=4
 endif
