@@ -1,8 +1,4 @@
 if has('conceal')
-	" More paper specific (what to do with these??)
-	syn match texMathSymbol '\\pathspace' contained conceal cchar=Ω
-	syn match texMathSymbol '\\surfaces' contained conceal cchar=𝓜
-
 	" more reasonably sized symbols that were already defined
 	syn match texMathSymbol '\\Rightarrow\>' contained conceal cchar=⇒
 	syn match texMathSymbol '\\Leftarrow\>' contained conceal cchar=⇐
@@ -172,8 +168,8 @@ if has('conceal')
 	syn match texMathSymbol '\\sqrt' contained conceal cchar=√
 	syn match texMathSymbol '\\where\>' contained conceal cchar=|
 	syn match texMathSymbol '\\\!' contained conceal
-	"syn match texStatement '\\\[' contained conceal cchar=⟦
-	"syn match texStatement '\\\]' contained conceal cchar=⟧
+
+	syn match texMathSymbol '\\Omega' contained conceal cchar=Ω
 
 	" hide \text delimiter etc inside math mode
 	if !exists("g:tex_nospell") || !g:tex_nospell
