@@ -177,7 +177,7 @@ if has('conceal')
     syn match texMathSymbol '\\math\(cal\|scr\|pzc\){Y}' contained conceal cchar=𝓨
     syn match texMathSymbol '\\math\(cal\|scr\|pzc\){Z}' contained conceal cchar=𝓩
 
-    "  AMS-Math Package Support: {{{1
+    "  AMS-Math Package Support:
     call TexNewMathZone("E","align",1)
     call TexNewMathZone("F","alignat",1)
     call TexNewMathZone("G","equation",1)
@@ -187,7 +187,10 @@ if has('conceal')
     call TexNewMathZone("K","xalignat",1)
     call TexNewMathZone("L","xxalignat",0)
 
-    syn match texBadMath		"\\end\s*{\s*\(align\|alignat\|equation\|flalign\|gather\|multline\|xalignat\|xxalignat\)\*\=\s*}"
+    syn match texBadMath "\\end\s*{\s*\(align\|alignat\|equation\|flalign\|gather\|multline\|xalignat\|xxalignat\)\*\=\s*}"
+
+    " Handle the minted environment
+    au FileType tex syn region texZone start="\\begin{minted}" end="\\end{minted}" contains=@NoSpell
 
     syn spell toplevel
 endif

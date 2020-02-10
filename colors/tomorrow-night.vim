@@ -39,7 +39,7 @@ hi Structure guifg=#b294bb ctermfg=139
 hi Function guifg=#81a2be ctermfg=109
 hi Constant guifg=#de935f ctermfg=173
 hi String guifg=#b5bd68 ctermfg=143
-hi Special guifg=#c5c8c6 ctermfg=250
+hi Special guifg=#c5c8c6 ctermfg=2
 hi PreProc guifg=#b294bb ctermfg=139
 hi Operator guifg=#8abeb7 ctermfg=109 gui=none cterm=none
 hi Type guifg=#81a2be ctermfg=109 gui=none cterm=none
