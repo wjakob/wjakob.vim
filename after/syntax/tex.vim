@@ -177,6 +177,10 @@ if has('conceal')
     syn match texMathSymbol '\\math\(cal\|scr\|pzc\){Y}' contained conceal cchar=𝓨
     syn match texMathSymbol '\\math\(cal\|scr\|pzc\){Z}' contained conceal cchar=𝓩
 
+    " SIGGRAPH style shortcite
+    syn match  texRefZone		'\\shortcite' nextgroup=texRefOption,texCite
+    syn match  texRefZone		'\\citeauthor' nextgroup=texRefOption,texCite
+
     "  AMS-Math Package Support:
     call TexNewMathZone("E","align",1)
     call TexNewMathZone("F","alignat",1)
